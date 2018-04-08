@@ -6,34 +6,6 @@ Frames Homepage
 
 
 @section('content')
-        <!-- Hero -->
-        <section class="hero-fullwidth hero-product-showcase">
-            <div class="hero-parallax-fullwidth">
-                
-                <div class="hero-image bg-product-1">
-                     
-                    <div class="hero-container container">  
-                        <div class="hero-content scroll-opacity">  
-                            <div class="appear container text-center pt40">
-                                <h5 class="subheading white">Get your photobook</h5>
-                                <img src="img/product/product-logo.png" class="width100">
-                                <h3 class="white mt5 scroll-opacity">
-                                    <small>
-                                        This is where music starts playing!
-                                        <br>Perfect sound from ear to ear.
-                                    </small>
-                                </h3>      
-                                <a href="#" class="btn btn-primary btn-md btn-appear scroll-opacity mt40"><span>Pre-Order Now <i class="ion-android-arrow-forward"></i></span></a> 
-                            </div>
-                        </div> 
-                    </div> 
-                    
-                </div> 
-                
-            </div>
-        </section>
-        <!-- End Hero -->  
-        
         <div class="site-wrapper fullwidth-md">  
             
             <!-- Start Image Left Wide -->
@@ -62,11 +34,15 @@ Frames Homepage
                     <div class="row-flex-center">  
                         
                         <div class="col-md-6 p0"> 
-                            <div class="frame-image-large">
+                            <div class="frame-image-container">
                                 
-                                <img id="frame-image-large" src="http://127.0.0.1:8000/uploads/frames_images_large/1522679474GT5646CWZQ.png" class="center-frame-image top-frame" alt="#">
+                                {{-- <img id="frame-image-large" src="http://127.0.0.1:8000/uploads/frames_images_large/1522679474GT5646CWZQ.png" class="center-frame-image top-frame" alt="#">
 
                                 <img id="user-image" src="{{asset('img/trans.png')}}" class="back-image center-frame-image" alt="#">
+ --}}
+                                <img id="frame-image-large" src="http://127.0.0.1:8000/uploads/frames_images_large/1522679474GT5646CWZQ.png" class="frame-images top-frame" alt="#">
+
+                                <img id="user-image" src="{{asset('img/trans.png')}}" class="frame-images back-image" alt="#">
 
                                 
                                 
@@ -126,22 +102,37 @@ Frames Homepage
                             </form>
                             </div>
 
-                            <div class="dinamic-filters">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="dinamic-filters">
 
-                                <div class="row">
-                                    <div id="available-orientations">
-                                    
+                                        <div class="row">
+                                            <div id="available-orientations">
+                                            
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div id="available-sizes">
+                                            
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-
-
-                                <div class="row">
-                                    <div id="available-sizes">
-                                    
+                                <div class="col-sm-4">
+                                    <div id="frame_details" style="display: none;">
+                                        <h5>Details</h5>
+                                        <div class="details-container">
+                                            <p>Orientation : <span id="details-orientation"></span> <span id="details-size"></span></p>
+                                            <p>Dimension : <span id="details-dimension"></span></p>
+                                            <p>Price : <span id="details-price"></span></p>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
+                            
                             
                             
 
@@ -251,6 +242,9 @@ Frames Homepage
             $( "#available-orientations" ).append( orientation_div ).hide().show('slow');
         });
 
+        $( "#frame_details" ).show();
+        $( "#available-orientations div.available-orientatiion:first-child" ).click();
+
 
     }
 
@@ -287,6 +281,11 @@ Frames Homepage
         console.log(cur_slected_frame);
         console.log(image.height());
 
+        $('#details-orientation').html(cur_slected_frame.frameorientation.name);
+        $('#details-dimension').html(cur_slected_frame.dimension);
+        $('#details-price').html( "GHS" + cur_slected_frame.price);
+        $('#details-size').html(cur_slected_frame.framesize.name);
+
 
         $('#user-image').fadeOut('fast');
         image.fadeOut('fast', function () {
@@ -303,6 +302,7 @@ Frames Homepage
         if( resizeCount != 100 ){
             setTimeout(function() {
                 $('#user-image').height(($("#frame-image-large").height()-20));
+                $('.frame-image-container').height(($("#frame-image-large").height()+20));
                 $('#user-image').width(($("#frame-image-large").width()-20));
                 resizeUserImage();
             },200);
