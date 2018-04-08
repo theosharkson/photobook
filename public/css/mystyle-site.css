@@ -1,0 +1,139 @@
+.frame-thumb{
+	width:100px;
+	display: inline-block;
+	margin: 0px 5px;
+    vertical-align: bottom;
+}
+
+.frame-thumb img{
+	max-width:100px;
+}
+
+.center-frame-image{
+	display:block;
+    margin:auto;
+}
+
+.frame-image-large{
+	margin: 50px;
+    /*border: 1px solid;*/
+    
+}
+
+.back-image{
+    position: absolute;
+    top: 59px;
+    z-index: 10;
+    width: 65%;
+    height: 72%;
+    left: 170px;
+}
+
+.top-frame{
+    position: relative;
+    z-index: 100;
+    max-width: 350px;
+}
+
+#available-sizes{
+    /*min-height: 100px;*/
+    margin: 15px;
+}
+
+#available-orientations{
+    margin: 10px;
+}
+
+.available-orientatiion{
+    display: inline-block;
+    padding: 0px;
+    margin: 12px;
+    vertical-align: bottom;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 11px;
+}
+
+.available-orientatiion:hover{
+    /*background-color: #fff;*/
+    background-color: #b4e0ff9e;
+}
+
+.active-Orientation{
+    /*background-color: #fff;*/
+        background-color: #b4e0ff9e;
+}
+
+
+#available-sizes{
+    /*min-height: 100px;*/
+}
+.available-size{
+    display: inline-block;
+    padding: 8px;
+    background-color: black;
+    color: white;
+    margin: 5px;
+    height: 36px;
+    width: 36px;
+    text-align: center;
+    border-radius: 200px;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 3px 7px 0 rgba(0,0,0,.25);
+}
+
+.available-size:hover , .active-size{
+    background-color: #fff;
+    color: black
+}
+
+.dinamic-filters{
+    height: 150px
+}
+
+.portrait{
+    width: 60px;
+    height: 80px;
+    border: 2px solid;
+    box-shadow: 3px 3px 0px #aaaaaa;
+}
+
+.landscape{
+    width: 105px;
+    height: 60px;
+    border: 2px solid;
+    box-shadow: 3px 3px 0px #aaaaaa;
+}
+
+.square{
+    width: 80px;
+    height: 80px;
+    border: 2px solid;
+    box-shadow: 3px 3px 0px #aaaaaa;
+}
+
+.user-upload-section{
+    margin: 19px 0px 0px 4px;
+    background-color: #d4d4d44a;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    float: right;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.prod-img{
+    border-radius: 4px;
+    box-shadow: 0 3px 7px 0 rgba(0,0,0,.25);
+}
