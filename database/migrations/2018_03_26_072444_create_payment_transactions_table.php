@@ -15,11 +15,16 @@ class CreatePaymentTransactionsTable extends Migration
     {
         Schema::create('payment_transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('transaction_code')->unique();
+            $table->double('amount');
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->double('amount');
             $table->integer('payment_method_id')->unsigned();
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
+            $table->string('remarks')->nullable();
+            $table->string('uuid')->nullable();
+            $table->string('trnx_code')->nullable();
+            $table->string('provider_txid')->nullable();
             $table->timestamps();
         });
     }

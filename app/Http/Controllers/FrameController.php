@@ -30,7 +30,8 @@ class FrameController extends Controller
         $frames = Frame::get();
         $orientations = Orientation::get();
         $frame_sizes = FrameSize::get();
-        return view('site.frames.request_form',compact('frames','orientations','frame_sizes'));
+        $image_code = getCode('App\FrameOrderImage','code');
+        return view('site.frames.request_form',compact('frames','orientations','frame_sizes','image_code'));
     }
 
 

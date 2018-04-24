@@ -36,7 +36,7 @@ Frames Homepage
         
         <div class="site-wrapper fullwidth-md">  
             
-            <!-- Start Image Left Wide -->
+{{--             <!-- Start Image Left Wide -->
             <section class="pt40 pb40">
                 <div class="container-fluid">
                     <div class="row-flex-center"> 
@@ -74,9 +74,9 @@ Frames Homepage
                     </div>
                 </div>
             </section>
-            <!-- End Image Right Wide -->   
+            <!-- End Image Right Wide -->    --}}
             
-            <!-- Call to Action --> 
+         {{--    <!-- Call to Action --> 
             <section class="static bg-product-2 pt100 pb100"> 
                 <div class="container">  
                     <div class="row pt100 pb80">
@@ -91,7 +91,7 @@ Frames Homepage
                 	</div>
                 </div>
             </section>
-        	<!-- End Call to Action --> 
+        	<!-- End Call to Action -->  --}}
             
             <!-- Start Features Left --> 
             <section class="mt100 pt20">

@@ -47,22 +47,30 @@ class FrameOrderImageController extends Controller
             $params['image'] = save_image( $request->file('image'), 'frame_orders');
         }
 
-        return response()->json(['success'=>'done','product_image_id'=>111,'image'=>$params['image']]);
+        $user_image = FrameOrderImage::create($params);
 
-        return response()->json(['error'=>'Not Found']);
-
-        dd($params);
-
-        //Create the frame
-        try {
-
-          Frame::create($params);
-
-        } catch (Exception $e) {
-
-            return redirect()->back()->with('error_message','Sorry, Unable to Add Frame.');
+        if($user_image){
+            return response()->json(['success'=>'done','product_image_id'=>$user_image->id,'image'=>$params['image'] ]);
         }
+
+
+        return response()->json(['error'=>'Sorry, Something went wrong.']);
+
     }
+
+
+    
+
+    public function deleteUploadImage($image_id){
+        $image = FrameOrderImage::find($image_id);
+        if($image){
+            $image->delete();
+            return response()->json(['success'=>'deleted']);
+        }
+        return response()->json(['error'=>'Not Found']);
+    }
+
+
 
     /**
      * Display the specified resource.

@@ -10,5 +10,14 @@ class FrameOrder extends Model
                             'frame_id',
                             'quantity',
     					];
-}
+
+    protected $with = ['frame','UserImage'];
+    					
+    public function frame(){
+	    return $this->belongsTo('App\Frame','frame_id');
+	}
+
+	public function UserImage(){
+	    return $this->hasMany('App\FrameOrderImage','frame_order_id');
+	}
 }

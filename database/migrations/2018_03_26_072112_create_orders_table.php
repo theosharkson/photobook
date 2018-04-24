@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->integer('active_status')->default('1');
             $table->integer('updated_by')->unsigned()->nullable();
             $table->foreign('updated_by')->references('id')->on('users');
+            $table->integer('order_locations_id')->unsigned()->nullable();
+            $table->foreign('order_locations_id')->references('id')->on('order_locations');
             $table->timestamps();
         });
     }

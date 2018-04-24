@@ -2,7 +2,7 @@
     <!-- START X-NAVIGATION -->
     <ul class="x-navigation">
         <li class="xn-logo">
-            <a href="index.html">Photo Books</a>
+            <a href="#">Photo Books</a>
             <a href="#" class="x-navigation-control"></a>
         </li>
         <li class="xn-profile">
@@ -18,8 +18,8 @@
                     <div class="profile-data-title">Web Developer/Designer</div>
                 </div>
                 <div class="profile-controls">
-                    <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
-                    <a href="pages-messages.html" class="profile-control-right"><span class="fa fa-envelope"></span></a>
+                    <a href="#" class="profile-control-left"><span class="fa fa-info"></span></a>
+                    <a href="#" class="profile-control-right"><span class="fa fa-envelope"></span></a>
                 </div>
             </div>                                                                        
         </li>
@@ -62,7 +62,54 @@
 
             </ul>
         </li>
+
+
+        <li class="xn-openable {{in_array(Request::route()->getName(), [
+                              'orders.index',
+                              'orders.pending',
+                              'orders.show',
+                              'order-locations.show',
+                              'order-locations.create',
+                              'order-locations.edit',
+                              ]) ? 'active' : ''}}">
+            <a href="#"><span class="fa fa-shopping-cart"></span> 
+                <span class="xn-text">Orders</span>
+            </a>
+            <ul>
+                <li class="{{in_array(Request::route()->getName(), [
+                              'order-locations.show',
+                              'order-locations.create',
+                              'order-locations.edit',
+                              ]) ? 'active' : ''}}">
+                    <a href="{{route('order-locations.create')}}">
+                        <span class="fa fa-map-marker"></span>
+                        Order Locations
+                    </a>
+                </li>
+
+                <li class="{{in_array(Request::route()->getName(), [
+                              'orders.pending',
+                              ]) ? 'active' : ''}}">
+                    <a href="{{route('orders.pending')}}">
+                        <span class="fa fa-dropbox"></span> 
+                        Pending Orders
+                    </a>
+                </li>
+
+                <li class="{{in_array(Request::route()->getName(), [
+                              'orders.index',
+                              ]) ? 'active' : ''}}">
+                    <a href="{{route('orders.index')}}">
+                        <span class="fa fa-shopping-cart"></span> 
+                        All Orders
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
         
+
         
         
     </ul>

@@ -20,6 +20,16 @@
     
 }
 
+.input-error{
+    background-color: #ffd7d7;
+}
+
+.error-help{
+    text-align: left;
+    margin: -13px 0px 0px 3px;
+    font-size: 11px;
+}
+
 .frame-images{
     position: absolute;
     top: 0;
@@ -31,6 +41,13 @@
     margin : auto;
     /*background-color: white;*/
     top: 0;
+}
+
+.cart-user-image{
+    width: 80px;
+    border: 2px solid #cecdcdc4;
+    border-radius: 5px;
+    margin: auto;
 }
 
 .back-image{
@@ -73,11 +90,11 @@
     font-size: 11px;
 }
 
-.available-orientatiion:hover{
-    /*background-color: #fff;*/
+/*.available-orientatiion:hover{
+    background-color: #fff;
     background-color: #b4e0ff9e;
 }
-
+*/
 .active-Orientation{
     /*background-color: #fff;*/
         background-color: #b4e0ff9e;
@@ -107,8 +124,18 @@
     color: black
 }
 
+
+.frame-thumb:hover , 
+.frame-active , 
+.active-Orientation , 
+.available-orientatiion:hover{
+ background: linear-gradient(45deg, transparent 0%, transparent 57%, #f5f0f7 100%),
+             linear-gradient(-45deg, #8f5046 0%, #ffc4bb 0.3%, #33847d 112%, transparent 11% ), 
+             linear-gradient(-90deg, #b97267 100%, #e8e2e1 65%, transparent 20% );
+}
+
 .dinamic-filters{
-    height: 150px
+    min-height: 150px
 }
 
 .portrait{

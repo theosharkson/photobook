@@ -9,8 +9,12 @@
                             <span class="icon-bar middle-bar"></span>
                             <span class="icon-bar bottom-bar"></span>
                         </button>
-                        <a class="navbar-brand logo-light" href="#"><img src="img/assets/logo-light.png" alt="#"></a>
-                        <a class="navbar-brand logo-dark" href="#"><img src="img/assets/logo-dark.png" alt="#"></a>
+                        <a class="navbar-brand logo-light" href="{{route('site')}}">
+                            <img src="img/assets/logo-light.png" alt="{{route('site')}}">
+                        </a>
+                        <a class="navbar-brand logo-dark" href="{{route('site')}}">
+                            <img src="img/assets/logo-dark.png" alt="{{route('site')}}"
+                            ></a>
                     </div>
                 </div>
                 
@@ -250,20 +254,6 @@
                             </li> 
                             <!-- End Portfolio -->
                             
-                            <!-- Shop --> 
-                            <li class="dropdown"><a href="shop-3columns.html" class="dropdown-toggle">Shop<i class="fa fa-chevron-down"></i></a> 
-                                <ul class="dropdown-menu">    
-                                    <li><a href="shop-3columns.html">Shop 3 columns</a></li> 
-                                    <li><a href="shop-4columns.html">Shop 4 columns</a></li>
-                                    <li><a href="shop-2columns.html">Shop 2 columns</a></li> 
-                                    <li><a href="shop-fullwidth.html">Shop Fullwidth</a></li>  
-                                    <li><a href="shop-product.html">Shop Product</a></li>
-                                    <li><a href="shop-cart.html">Cart</a></li>
-                                    <li><a href="shop-checkout.html">Checkout</a></li>
-                                </ul> 
-                            </li> 
-                            <!-- End Shop -->
-                            
                             <!-- Blog -->
                             <li class="dropdown"><a href="blog-masonry-fullwidth.html" class="dropdown-toggle">Blog<i class="fa fa-chevron-down"></i></a> 
                                 <ul class="dropdown-menu">
@@ -289,6 +279,27 @@
                             
                             <!-- Search Icon Button -->
                             <li class="header-divider"><a><span></span></a></li> 
+                            
+                            <!-- Shop --> 
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle">
+                                    Account<i class="fa fa-chevron-down"></i>
+                                </a> 
+                                <ul class="dropdown-menu">    
+                                    <li><a href="shop-3columns.html">Profile</a></li> 
+                                    <li>
+                                        <a href="{{ route('logout') }}"onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Lofout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul> 
+                            </li> 
+                            <!-- End Shop -->
+
                             <li class="header-icon-btn">
                                 <a class="popup-with-zoom-anim search" href="#search-modal"><span class="fa fa-search"></span></a>
                                 <div id="search-modal" class="zoom-anim-dialog mfp-hide">
@@ -299,10 +310,12 @@
                             </li> 
                             <!-- End Search Icon Button -->
                              
-                            <!-- Social Icons -->
-                            <li><a href="#"><span class="ion-social-twitter"></span></a></li> 
-                            <!-- End Social Icons -->
-                            
+                            @if(!empty($cartItems))
+                                <!-- Social Icons -->
+                                <li><a href="{{route('cart')}}">
+                                    <span class="fa fa-cart-arrow-down fa-2x"></span></a></li> 
+                                <!-- End Social Icons -->
+                            @endif
                         </ul>   
                     </div>
                 </div>

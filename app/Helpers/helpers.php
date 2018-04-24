@@ -2,12 +2,14 @@
 
 
 use App\Order;
-use App\UserType;
+use App\OrderLocation;
 use App\ProcessStatus;
+use App\UserType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+
 
 //generate random string
 function generateRandomString($length) {
@@ -32,12 +34,13 @@ function daysOfweek(){
 }
 
 //generate random unique code
-function getProductCode($model,$field){
+function getCode($model,$field){
     do{
         $rand = generateRandomString(8);
     }while(!empty($model::where($field,$rand)->first()));
     return $rand;
 }
+
 
 function save_image($image,$person_type,$update_image=0){
     ini_set('memory_limit','256M');
@@ -109,6 +112,12 @@ function save_image($image,$person_type,$update_image=0){
 
 
 
+function getCurrencyCode()
+{
+    return 'GHS';
+    
+}
+
 function getDefaultPassword()
 {
     return '123456';
@@ -166,9 +175,30 @@ function getRandomColor()
 }
 
 
-function getPendingId()
+function getTempId()
 {
-    $record = ProcessStatus::where('name','Pending')->first();
+    $record = ProcessStatus::where('name','Temp')->first();
+    if(!empty($record)){
+        return $record->id;
+    }else{
+        return 1;
+    }
+}
+
+function getPaymentId()
+{
+    $record = ProcessStatus::where('name','Payment')->first();
+    if(!empty($record)){
+        return $record->id;
+    }else{
+        return 1;
+    }
+}
+
+
+function getNewId()
+{
+    $record = ProcessStatus::where('name','New')->first();
     if(!empty($record)){
         return $record->id;
     }else{
@@ -219,7 +249,7 @@ function getProcessingOrders()
 
 function getAdminRoleId()
 {
-    $role = UserType::where('name','Admininstrator')->first();
+    $role = UserType::where('name','Admin')->first();
     if(!empty($role)){
         return $role->id;
     }else{
@@ -237,6 +267,17 @@ function getCustomerRoleId()
     }
 }
 
+
+
+function getDefaultLocationId()
+{
+    $location = OrderLocation::where('location','OUR OFFICE')->first();
+    if(!empty($location)){
+        return $location->id;
+    }else{
+        return null;
+    }
+}
 
 
 
